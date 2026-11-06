@@ -1,0 +1,1260 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLUE DEPTHS | IPA VII</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#061b32;
+  --deep:#082c4d;
+  --blue:#087ca7;
+  --cyan:#43d9e8;
+  --light:#e8faff;
+  --white:#ffffff;
+  --glass:rgba(255,255,255,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#061b32;
+  color:white;
+  min-height:100vh;
+}
+button{font-family:inherit;cursor:pointer}
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+#home{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px 20px;
+  background:
+  linear-gradient(180deg,rgba(3,20,39,.35),rgba(3,20,39,.9)),
+  url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=2000&q=85') center/cover;
+}
+.home-content{max-width:850px}
+.logo{
+  font-size:13px;
+  letter-spacing:7px;
+  color:#83efff;
+  margin-bottom:20px;
+}
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(45px,9vw,90px);
+  line-height:1.05;
+  margin-bottom:20px;
+  text-shadow:0 5px 30px #001629;
+}
+.home-content p{
+  max-width:650px;
+  margin:0 auto 30px;
+  line-height:1.9;
+  color:#d5f4ff;
+}
+.menu-buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+}
+.main-btn{
+  border:none;
+  border-radius:40px;
+  padding:15px 30px;
+  font-size:14px;
+  font-weight:700;
+  transition:.3s;
+}
+.main-btn:hover{transform:translateY(-4px)}
+.btn-material{background:#e7fbff;color:#06304e}
+.btn-quiz{
+  background:linear-gradient(120deg,#14b8d4,#087ca7);
+  color:white;
+  box-shadow:0 8px 25px #00b7d455;
+}
+.small-note{font-size:11px;color:#b9e9f5;margin-top:35px}
+.nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(4,27,49,.94);
+  backdrop-filter:blur(12px);
+  padding:15px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ffffff20;
+}
+.nav-title{font-weight:800;letter-spacing:3px;color:#65e5f4}
+.back-btn{
+  border:1px solid #ffffff55;
+  background:transparent;
+  color:white;
+  padding:9px 17px;
+  border-radius:30px;
+}
+.container{max-width:1050px;margin:auto;padding:35px 20px 70px}
+.section-heading{
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+  margin:15px 0;
+}
+.subtitle{color:#b9e7f5;line-height:1.8;margin-bottom:30px}
+.material-card{
+  background:linear-gradient(135deg,rgba(17,95,133,.6),rgba(6,39,69,.85));
+  border:1px solid #8deaff25;
+  border-radius:22px;
+  padding:25px;
+  margin-bottom:22px;
+  box-shadow:0 12px 30px #00152545;
+}
+.material-card h3{font-size:22px;color:#76e9fa;margin-bottom:15px}
+.material-card h4{color:#b2f5ff;margin:20px 0 8px}
+.material-card p,.material-card li{
+  color:#e1f6fb;
+  font-size:14px;
+  line-height:1.9;
+}
+.material-card ul{padding-left:22px;margin-top:8px}
+.material-card li{margin:5px 0}
+.info{
+  background:#ffffff12;
+  border-left:4px solid #42d9e9;
+  padding:14px 17px;
+  border-radius:8px;
+  margin:15px 0;
+  font-size:13px;
+  line-height:1.8;
+  color:#e7fbff;
+}
+.formula{
+  background:#031b31;
+  border:1px solid #3abdd7;
+  border-radius:12px;
+  text-align:center;
+  padding:17px;
+  margin:15px 0;
+  color:#7cecff;
+  font-size:20px;
+  font-weight:700;
+}
+.topic-image{
+  width:100%;
+  max-height:260px;
+  object-fit:cover;
+  border-radius:15px;
+  margin:15px 0;
+  opacity:.9;
+}
+.topic-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:13px;
+  margin:18px 0;
+}
+.topic-item{
+  background:#ffffff10;
+  padding:17px;
+  border-radius:13px;
+  border:1px solid #ffffff17;
+}
+.topic-item strong{display:block;color:#7cecff;margin-bottom:7px}
+.topic-item span{font-size:12px;line-height:1.7;color:#d7f2fa}
+.quiz-hero{
+  min-height:220px;
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  padding:30px;
+  margin-bottom:25px;
+  background:
+  linear-gradient(90deg,#031b31dd,#031b3166),
+  url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85') center/cover;
+}
+.quiz-hero h2{
+  font-family:'Playfair Display',serif;
+  font-size:35px;
+}
+.quiz-box{
+  background:#0b3556;
+  border:1px solid #ffffff20;
+  padding:25px;
+  border-radius:20px;
+}
+.quiz-meta{
+  display:flex;
+  justify-content:space-between;
+  color:#9beaf5;
+  font-size:13px;
+  margin-bottom:17px;
+}
+.progress{
+  height:7px;
+  background:#ffffff20;
+  border-radius:10px;
+  overflow:hidden;
+  margin-bottom:25px;
+}
+.progress-bar{
+  height:100%;
+  background:#43d9e8;
+  width:0%;
+  transition:.3s;
+}
+.question{
+  font-size:19px;
+  font-weight:600;
+  line-height:1.7;
+  margin-bottom:22px;
+}
+.options{display:grid;gap:12px}
+.option{
+  text-align:left;
+  padding:14px 17px;
+  border:1px solid #ffffff35;
+  background:#ffffff0c;
+  color:white;
+  border-radius:12px;
+  font-size:14px;
+  line-height:1.6;
+  transition:.2s;
+}
+.option:hover{background:#ffffff20}
+.option.selected{border-color:#54e3f2;background:#087ca7}
+.option.correct{border-color:#57e69a;background:#146b50}
+.option.wrong{border-color:#ff8585;background:#7b303c}
+.quiz-controls{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:25px;
+}
+.action-btn{
+  border:0;
+  border-radius:30px;
+  padding:12px 23px;
+  background:#42d9e8;
+  color:#042b45;
+  font-weight:700;
+}
+.action-btn:disabled{opacity:.35;cursor:not-allowed}
+.result-card{
+  text-align:center;
+  padding:30px 15px;
+}
+.score{
+  font-size:65px;
+  font-weight:800;
+  color:#75edfa;
+  margin:10px;
+}
+.result-card p{color:#d8f5fb;line-height:1.8}
+.review-item{
+  text-align:left;
+  background:#ffffff0d;
+  border:1px solid #ffffff20;
+  border-radius:13px;
+  padding:18px;
+  margin:15px 0;
+}
+.review-item h4{line-height:1.7;margin-bottom:10px}
+.review-item p{font-size:13px;line-height:1.8;margin:6px 0}
+.good{color:#72edab}
+.bad{color:#ff9999}
+.footer{
+  text-align:center;
+  padding:30px 15px;
+  color:#9ac9d8;
+  font-size:11px;
+}
+@media(max-width:600px){
+  .section-heading{font-size:29px}
+  .material-card{padding:19px}
+  .quiz-box{padding:18px}
+  .quiz-hero h2{font-size:28px}
+  .question{font-size:16px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU UTAMA -->
+<section id="home" class="page active">
+  <div class="home-content">
+    <div class="logo">OCEAN LEARNING EXPERIENCE</div>
+    <h1>BLUE<br>DEPTHS</h1>
+    <p>
+      Selami dunia ilmu pengetahuan alam.
+      Pelajari rahasia zat dan perubahannya melalui
+      materi interaktif dan tantangan kuis bertema lautan.
+    </p>
+    <div class="menu-buttons">
+      <button class="main-btn btn-material" onclick="openPage('materials')">
+        🌊 RUANG MATERI
+      </button>
+      <button class="main-btn btn-quiz" onclick="openPage('quizPage')">
+        🐋 OCEAN QUIZ
+      </button>
+    </div>
+    <div class="small-note">IPA KELAS VII • BAB II • ZAT DAN PERUBAHANNYA</div>
+  </div>
+</section>
+
+<!-- HALAMAN MATERI -->
+<section id="materials" class="page">
+  <nav class="nav">
+    <div class="nav-title">BLUE DEPTHS</div>
+    <button class="back-btn" onclick="goHome()">← Kembali</button>
+  </nav>
+
+  <main class="container">
+    <div class="logo">KNOWLEDGE UNDER THE SEA</div>
+    <h2 class="section-heading">Ruang Materi</h2>
+    <p class="subtitle">
+      Bab II — Zat dan Perubahannya<br>
+      Pelajari konsep dasar zat, partikel, perubahan wujud,
+      perubahan fisika dan kimia, serta kerapatan zat.
+    </p>
+
+    <!-- A -->
+    <article class="material-card">
+      <h3>01. Wujud Zat dan Model Partikel</h3>
+      <p>
+        Zat atau materi adalah segala sesuatu yang memiliki massa
+        dan menempati ruang. Benda-benda di sekitar kita tersusun
+        atas partikel-partikel yang sangat kecil.
+      </p>
+
+      <img class="topic-image"
+      src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80"
+      alt="Lautan luas">
+
+      <h4>A. Tiga wujud zat</h4>
+      <div class="topic-grid">
+        <div class="topic-item">
+          <strong>🧊 Zat Padat</strong>
+          <span>
+            Bentuk dan volumenya tetap. Partikelnya tersusun rapat
+            dan teratur. Partikel hanya bergetar di sekitar posisi
+            tetapnya. Contoh: es, batu, dan garam.
+          </span>
+        </div>
+        <div class="topic-item">
+          <strong>💧 Zat Cair</strong>
+          <span>
+            Volumenya tetap, tetapi bentuknya mengikuti wadah.
+            Partikelnya berdekatan, tetapi dapat bergerak dan
+            bergeser satu sama lain. Contoh: air dan minyak.
+          </span>
+        </div>
+        <div class="topic-item">
+          <strong>☁️ Zat Gas</strong>
+          <span>
+            Bentuk dan volumenya tidak tetap. Partikelnya berjauhan
+            dan bergerak bebas ke segala arah. Contoh: udara dan
+            uap air.
+          </span>
+        </div>
+      </div>
+
+      <h4>B. Model partikel zat</h4>
+      <p>
+        Model partikel digunakan untuk menjelaskan susunan dan
+        gerakan partikel penyusun zat. Perbedaan jarak dan gerakan
+        partikel menyebabkan sifat zat padat, cair, dan gas berbeda.
+      </p>
+      <ul>
+        <li>Zat padat: partikel sangat rapat dan tersusun teratur.</li>
+        <li>Zat cair: partikel masih berdekatan, tetapi susunannya tidak teratur.</li>
+        <li>Zat gas: partikel berjauhan dan bergerak bebas.</li>
+      </ul>
+
+      <h4>C. Kompresibilitas</h4>
+      <p>
+        Kompresibilitas adalah kemampuan suatu zat untuk dimampatkan
+        atau diperkecil volumenya ketika diberi tekanan.
+      </p>
+      <ul>
+        <li>Gas mudah dimampatkan karena jarak antarpartikelnya besar.</li>
+        <li>Cairan sangat sulit dimampatkan.</li>
+        <li>Padatan juga sangat sulit dimampatkan.</li>
+      </ul>
+      <div class="info">
+        Contoh: udara di dalam suntikan tanpa jarum dapat dimampatkan
+        ketika ujung suntikan ditutup dan penekan didorong.
+      </div>
+
+      <h4>D. Difusi</h4>
+      <p>
+        Difusi adalah peristiwa menyebarnya partikel suatu zat
+        ke seluruh bagian ruang atau bercampur dengan partikel
+        zat lainnya karena gerakan partikel.
+      </p>
+      <p>
+        Contoh: aroma parfum menyebar ke seluruh ruangan.
+        Tetesan zat warna juga dapat menyebar di dalam air.
+      </p>
+      <div class="info">
+        Difusi umumnya berlangsung lebih cepat pada gas dibandingkan
+        cairan karena partikel gas bergerak lebih bebas.
+      </div>
+    </article>
+
+    <!-- B -->
+    <article class="material-card">
+      <h3>02. Perubahan Wujud Zat</h3>
+      <p>
+        Perubahan wujud zat adalah perubahan bentuk fisik suatu zat
+        dari satu wujud ke wujud lainnya. Perubahan ini dapat terjadi
+        ketika zat menerima atau melepaskan energi kalor.
+      </p>
+
+      <img class="topic-image"
+      src="https://images.unsplash.com/photo-1483664852095-d6cc6870702d?auto=format&fit=crop&w=1000&q=80"
+      alt="Es dan air">
+
+      <h4>A. Enam macam perubahan wujud</h4>
+      <div class="topic-grid">
+        <div class="topic-item">
+          <strong>🧊 Mencair / Meleleh</strong>
+          <span>Padat menjadi cair. Contoh: es batu berubah menjadi air karena menerima kalor.</span>
+        </div>
+        <div class="topic-item">
+          <strong>❄️ Membeku</strong>
+          <span>Cair menjadi padat. Contoh: air berubah menjadi es ketika melepaskan kalor.</span>
+        </div>
+        <div class="topic-item">
+          <strong>🌫️ Menguap</strong>
+          <span>Cair menjadi gas. Contoh: air laut menguap akibat energi panas Matahari.</span>
+        </div>
+        <div class="topic-item">
+          <strong>💧 Mengembun</strong>
+          <span>Gas menjadi cair. Contoh: titik air muncul pada permukaan luar gelas dingin.</span>
+        </div>
+        <div class="topic-item">
+          <strong>🌬️ Menyublim</strong>
+          <span>Padat menjadi gas tanpa melalui cair. Contoh: kapur barus semakin lama semakin habis.</span>
+        </div>
+        <div class="topic-item">
+          <strong>❄️ Mengkristal / Deposisi</strong>
+          <span>Gas menjadi padat tanpa melalui cair. Contoh: terbentuknya kristal es dari uap air pada kondisi tertentu.</span>
+        </div>
+      </div>
+
+      <h4>B. Perubahan karena menerima dan melepaskan kalor</h4>
+      <p><b>Menerima kalor:</b> mencair, menguap, dan menyublim.</p>
+      <p><b>Melepaskan kalor:</b> membeku, mengembun, dan mengkristal.</p>
+
+      <h4>C. Menguap dan mendidih</h4>
+      <p>
+        Menguap dapat terjadi pada permukaan zat cair dan pada
+        berbagai suhu. Sementara itu, mendidih terjadi ketika
+        penguapan berlangsung di seluruh bagian zat cair pada
+        suhu didihnya untuk tekanan tertentu.
+      </p>
+      <div class="info">
+        Contoh menguap: pakaian basah mengering meskipun airnya
+        tidak mendidih. Contoh mendidih: air dalam panci menghasilkan
+        gelembung uap ketika mencapai suhu didihnya.
+      </div>
+
+      <h4>D. Pengaruh suhu terhadap perubahan wujud</h4>
+      <p>
+        Ketika zat menerima kalor, energi gerak partikelnya dapat
+        meningkat. Ketika zat melepaskan kalor, gerak partikelnya
+        dapat berkurang. Perubahan wujud berlangsung pada kondisi
+        suhu dan tekanan tertentu.
+      </p>
+      <p>
+        Pada tekanan tertentu, zat murni memiliki titik lebur
+        dan titik didih yang khas. Selama perubahan wujud zat murni
+        berlangsung, suhu dapat tetap meskipun kalor masih
+        diterima atau dilepaskan.
+      </p>
+
+      <div class="info">
+        Hubungan dengan lautan: air laut mengalami penguapan,
+        kemudian uap air dapat mengembun membentuk awan.
+        Rangkaian proses tersebut merupakan bagian dari siklus air.
+      </div>
+    </article>
+
+    <!-- C -->
+    <article class="material-card">
+      <h3>03. Perubahan Fisika dan Kimia</h3>
+      <p>
+        Zat dapat mengalami perubahan. Berdasarkan perubahan
+        komposisi zatnya, perubahan dapat dibedakan menjadi
+        perubahan fisika dan perubahan kimia.
+      </p>
+
+      <h4>A. Perubahan fisika</h4>
+      <p>
+        Perubahan fisika adalah perubahan zat yang tidak menghasilkan
+        zat baru. Zat hanya mengalami perubahan bentuk, ukuran,
+        atau wujud, sedangkan identitas zatnya tetap.
+      </p>
+      <p><b>Contoh perubahan fisika:</b></p>
+      <ul>
+        <li>Es mencair menjadi air.</li>
+        <li>Air membeku menjadi es.</li>
+        <li>Kertas dipotong menjadi bagian kecil.</li>
+        <li>Gula larut dalam air.</li>
+        <li>Air menguap menjadi uap air.</li>
+      </ul>
+
+      <h4>B. Perubahan kimia</h4>
+      <p>
+        Perubahan kimia adalah perubahan zat yang menghasilkan
+        zat baru dengan sifat yang berbeda dari zat asalnya.
+        Perubahan ini berkaitan dengan reaksi kimia.
+      </p>
+      <p><b>Contoh perubahan kimia:</b></p>
+      <ul>
+        <li>Besi mengalami perkaratan.</li>
+        <li>Kayu terbakar menjadi abu dan gas.</li>
+        <li>Makanan mengalami pembusukan.</li>
+        <li>Adonan mengalami perubahan ketika dipanggang menjadi kue.</li>
+        <li>Buah mengalami pematangan.</li>
+      </ul>
+
+      <h4>C. Tanda-tanda kemungkinan terjadi reaksi kimia</h4>
+      <div class="topic-grid">
+        <div class="topic-item">
+          <strong>Perubahan warna</strong>
+          <span>Contoh: besi berubah warna ketika berkarat.</span>
+        </div>
+        <div class="topic-item">
+          <strong>Terbentuk gas</strong>
+          <span>Contoh: reaksi tertentu menghasilkan gelembung gas.</span>
+        </div>
+        <div class="topic-item">
+          <strong>Terbentuk endapan</strong>
+          <span>Contoh: dua larutan tertentu menghasilkan padatan yang tidak larut.</span>
+        </div>
+        <div class="topic-item">
+          <strong>Perubahan energi</strong>
+          <span>Reaksi dapat menghasilkan atau menyerap energi, misalnya panas atau cahaya.</span>
+        </div>
+      </div>
+
+      <div class="info">
+        Catatan penting: satu tanda saja tidak selalu cukup untuk
+        memastikan perubahan kimia. Perhatikan apakah benar-benar
+        terbentuk zat baru.
+      </div>
+
+      <h4>D. Perbedaan utama</h4>
+      <p>
+        Perubahan fisika tidak menghasilkan zat baru, sedangkan
+        perubahan kimia menghasilkan zat baru. Karena itu,
+        mencairnya es termasuk perubahan fisika, sementara
+        perkaratan besi termasuk perubahan kimia.
+      </p>
+    </article>
+
+    <!-- D -->
+    <article class="material-card">
+      <h3>04. Kerapatan Zat (Massa Jenis)</h3>
+      <p>
+        Kerapatan zat atau massa jenis adalah ukuran massa suatu
+        zat dalam setiap satuan volumenya. Massa jenis menunjukkan
+        seberapa rapat suatu materi tersusun dalam ruang.
+      </p>
+
+      <img class="topic-image"
+      src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80"
+      alt="Air laut">
+
+      <h4>A. Rumus massa jenis</h4>
+      <div class="formula">ρ = m / V</div>
+      <ul>
+        <li>ρ (rho) = massa jenis.</li>
+        <li>m = massa benda.</li>
+        <li>V = volume benda.</li>
+      </ul>
+      <p>
+        Satuan SI massa jenis adalah kg/m³. Satuan lain yang
+        sering digunakan adalah g/cm³.
+      </p>
+      <div class="info">
+        Ingat: 1 g/cm³ = 1.000 kg/m³.
+        Pastikan satuan massa dan volume sesuai sebelum menghitung.
+      </div>
+
+      <h4>B. Contoh perhitungan</h4>
+      <p>
+        Sebuah benda memiliki massa 200 gram dan volume 100 cm³.
+        Berapakah massa jenis benda tersebut?
+      </p>
+      <div class="formula">
+        ρ = m / V<br>
+        ρ = 200 / 100<br>
+        ρ = 2 g/cm³
+      </div>
+      <p>
+        Jadi, massa jenis benda tersebut adalah 2 g/cm³.
+      </p>
+
+      <h4>C. Mengukur volume benda</h4>
+      <p>
+        Volume benda beraturan dapat dihitung menggunakan rumus
+        bangun ruang yang sesuai. Contohnya, volume balok adalah
+        panjang × lebar × tinggi.
+      </p>
+      <p>
+        Untuk benda tidak beraturan, volume dapat diukur dengan
+        metode perpindahan air menggunakan gelas ukur.
+      </p>
+      <div class="info">
+        Volume benda = volume air setelah benda dimasukkan
+        − volume air sebelum benda dimasukkan.
+      </div>
+
+      <h4>D. Hubungan massa jenis dengan terapung, melayang, dan tenggelam</h4>
+      <p>
+        Ketika benda dimasukkan ke dalam cairan, keadaan benda
+        dipengaruhi oleh perbandingan massa jenis benda dan
+        massa jenis cairan.
+      </p>
+      <div class="topic-grid">
+        <div class="topic-item">
+          <strong>🛟 Terapung</strong>
+          <span>Massa jenis rata-rata benda lebih kecil daripada massa jenis cairan.</span>
+        </div>
+        <div class="topic-item">
+          <strong>🌊 Melayang</strong>
+          <span>Massa jenis rata-rata benda sama dengan massa jenis cairan.</span>
+        </div>
+        <div class="topic-item">
+          <strong>⚓ Tenggelam</strong>
+          <span>Massa jenis rata-rata benda lebih besar daripada massa jenis cairan.</span>
+        </div>
+      </div>
+
+      <div class="formula">
+        ρ benda &lt; ρ cairan → Terapung<br><br>
+        ρ benda = ρ cairan → Melayang<br><br>
+        ρ benda &gt; ρ cairan → Tenggelam
+      </div>
+
+      <h4>E. Contoh perbandingan massa jenis</h4>
+      <p>
+        Sebuah benda memiliki massa jenis 0,8 g/cm³.
+        Benda dimasukkan ke dalam cairan dengan massa jenis
+        1 g/cm³.
+      </p>
+      <p>
+        Karena 0,8 lebih kecil daripada 1, benda akan terapung.
+      </p>
+
+      <div class="info">
+        Perhatikan: yang dibandingkan adalah massa jenis benda
+        dan massa jenis cairan dengan satuan yang sama,
+        bukan langsung massa benda dengan massa cairan.
+      </div>
+
+      <h4>F. Penerapan dalam kehidupan</h4>
+      <ul>
+        <li>Kapal dapat mengapung karena massa jenis rata-rata kapal beserta rongga udaranya lebih kecil daripada massa jenis air.</li>
+        <li>Minyak dapat berada di atas air karena massa jenis minyak umumnya lebih kecil daripada air.</li>
+        <li>Di Laut Mati, manusia lebih mudah mengapung karena kadar garam yang tinggi membuat massa jenis airnya lebih besar daripada air tawar.</li>
+        <li>Balon berisi helium dapat naik karena massa jenis rata-ratanya lebih kecil daripada udara di sekitarnya.</li>
+      </ul>
+    </article>
+
+    <!-- RANGKUMAN -->
+    <article class="material-card">
+      <h3>📘 Rangkuman Bab II</h3>
+      <ul>
+        <li>Zat memiliki massa dan menempati ruang.</li>
+        <li>Zat terdiri atas partikel-partikel kecil.</li>
+        <li>Tiga wujud zat adalah padat, cair, dan gas.</li>
+        <li>Partikel gas lebih mudah dimampatkan karena jaraknya berjauhan.</li>
+        <li>Difusi adalah penyebaran partikel suatu zat.</li>
+        <li>Perubahan wujud terdiri atas enam jenis.</li>
+        <li>Perubahan fisika tidak menghasilkan zat baru.</li>
+        <li>Perubahan kimia menghasilkan zat baru.</li>
+        <li>Massa jenis dihitung dengan rumus ρ = m/V.</li>
+        <li>Massa jenis menentukan kecenderungan benda terapung, melayang, atau tenggelam.</li>
+      </ul>
+      <div class="info">
+        Setelah memahami materi, lanjutkan ke Ocean Quiz
+        untuk menguji pemahamanmu!
+      </div>
+      <button class="action-btn" onclick="openPage('quizPage')">
+        Mulai Ocean Quiz →
+      </button>
+    </article>
+  </main>
+  <div class="footer">BLUE DEPTHS • EXPLORE THE WORLD OF SCIENCE</div>
+</section>
+
+<!-- HALAMAN KUIS -->
+<section id="quizPage" class="page">
+  <nav class="nav">
+    <div class="nav-title">OCEAN QUIZ</div>
+    <button class="back-btn" onclick="goHome()">← Menu Utama</button>
+  </nav>
+
+  <main class="container">
+    <div class="quiz-hero">
+      <div>
+        <div class="logo">TEST YOUR KNOWLEDGE</div>
+        <h2>Deep Sea Challenge</h2>
+        <p style="color:#d7f5ff;margin-top:10px">
+          15 pertanyaan • Pilihan ganda • Nilai otomatis
+        </p>
+      </div>
+    </div>
+
+    <div class="quiz-box" id="quizBox">
+      <div id="quizStart" class="result-card">
+        <div style="font-size:48px">🐋</div>
+        <h2 style="margin:15px 0">Siap Menjelajah?</h2>
+        <p>
+          Jawab 15 pertanyaan yang diambil secara acak
+          dari 50 soal Bab II Zat dan Perubahannya.
+        </p>
+        <br>
+        <button class="action-btn" onclick="startQuiz()">Mulai Kuis</button>
+      </div>
+
+      <div id="quizGame" style="display:none">
+        <div class="quiz-meta">
+          <span id="questionNumber">Soal 1 / 15</span>
+          <span id="answeredCount">Terjawab: 0</span>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="question" id="questionText"></div>
+        <div class="options" id="options"></div>
+        <div class="quiz-controls">
+          <button class="back-btn" onclick="previousQuestion()" id="prevBtn">← Sebelumnya</button>
+          <button class="action-btn" onclick="nextQuestion()" id="nextBtn">Selanjutnya →</button>
+        </div>
+      </div>
+
+      <div id="quizResult" style="display:none">
+        <div class="result-card">
+          <div style="font-size:48px">🏆</div>
+          <h2>Hasil Penjelajahan</h2>
+          <div class="score" id="scoreText">0</div>
+          <p id="resultMessage"></p>
+          <p id="correctCount" style="margin-top:12px"></p>
+          <br>
+          <button class="action-btn" onclick="showReview()">Lihat Pembahasan</button>
+          <button class="back-btn" onclick="startQuiz()" style="margin-left:7px">Ulangi</button>
+        </div>
+        <div id="reviewArea"></div>
+        <div style="text-align:center;margin-top:20px">
+          <button class="action-btn" onclick="startQuiz()">Coba Kuis Lagi</button>
+          <button class="back-btn" onclick="goHome()">Menu Utama</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="footer">BLUE DEPTHS • KEEP LEARNING, KEEP EXPLORING</div>
+</section>
+
+<script>
+/* =================================================
+   BANK SOAL: 50 PERTANYAAN
+   Indeks jawaban benar disimpan secara tetap.
+================================================= */
+
+const questionBank = [
+
+{
+q:"Apa yang dimaksud dengan zat atau materi?",
+o:["Segala sesuatu yang memiliki warna","Segala sesuatu yang memiliki massa dan menempati ruang","Segala sesuatu yang dapat dilihat","Segala sesuatu yang selalu berbentuk padat"],
+a:1,
+e:"Zat atau materi adalah segala sesuatu yang memiliki massa dan menempati ruang."
+},
+{
+q:"Bagaimana susunan partikel zat padat?",
+o:["Berjauhan dan bebas bergerak","Rapat dan relatif teratur","Berjauhan tetapi diam","Tidak memiliki partikel"],
+a:1,
+e:"Partikel zat padat tersusun rapat dan teratur serta hanya bergetar di sekitar posisi tetapnya."
+},
+{
+q:"Sifat utama zat cair adalah...",
+o:["Bentuk dan volumenya selalu tetap","Bentuknya tetap tetapi volumenya berubah","Bentuk mengikuti wadah dan volumenya tetap","Bentuk dan volumenya selalu berubah"],
+a:2,
+e:"Zat cair memiliki volume tetap, tetapi bentuknya mengikuti wadah."
+},
+{
+q:"Mengapa gas mudah dimampatkan?",
+o:["Partikelnya sangat rapat","Partikelnya tidak bergerak","Jarak antarpartikelnya berjauhan","Gas tidak memiliki massa"],
+a:2,
+e:"Jarak antarpartikel gas relatif besar sehingga dapat dimampatkan."
+},
+{
+q:"Peristiwa menyebarnya aroma parfum ke seluruh ruangan disebut...",
+o:["Mencair","Difusi","Membeku","Mengendap"],
+a:1,
+e:"Difusi adalah penyebaran partikel suatu zat ke bagian ruang lainnya."
+},
+{
+q:"Gerakan partikel zat padat adalah...",
+o:["Bergerak bebas ke segala arah","Berpindah dengan sangat cepat","Bergetar di sekitar posisi tetap","Tidak bergerak sama sekali"],
+a:2,
+e:"Partikel padat bergetar di sekitar posisi tetapnya."
+},
+{
+q:"Wujud zat yang memiliki bentuk dan volume tidak tetap adalah...",
+o:["Padat","Cair","Gas","Kristal"],
+a:2,
+e:"Gas tidak memiliki bentuk dan volume tetap."
+},
+{
+q:"Zat yang partikelnya berdekatan tetapi dapat bergeser adalah...",
+o:["Padat","Cair","Gas","Uap"],
+a:1,
+e:"Partikel zat cair berdekatan dan dapat bergerak atau bergeser."
+},
+{
+q:"Kompresibilitas adalah kemampuan zat untuk...",
+o:["Berubah warna","Dimampatkan","Menghasilkan cahaya","Membentuk endapan"],
+a:1,
+e:"Kompresibilitas adalah kemampuan suatu zat untuk dimampatkan."
+},
+{
+q:"Difusi umumnya berlangsung paling cepat pada...",
+o:["Padatan","Cairan","Gas","Semua sama"],
+a:2,
+e:"Partikel gas bergerak lebih bebas sehingga difusi umumnya berlangsung lebih cepat."
+},
+
+{
+q:"Perubahan wujud dari padat menjadi cair disebut...",
+o:["Membeku","Mencair","Mengembun","Menyublim"],
+a:1,
+e:"Mencair adalah perubahan wujud dari padat menjadi cair."
+},
+{
+q:"Air yang dimasukkan ke dalam freezer berubah menjadi es. Proses ini disebut...",
+o:["Menguap","Mencair","Membeku","Menyublim"],
+a:2,
+e:"Membeku adalah perubahan wujud dari cair menjadi padat."
+},
+{
+q:"Perubahan wujud dari cair menjadi gas disebut...",
+o:["Menguap","Mengembun","Membeku","Mengkristal"],
+a:0,
+e:"Menguap adalah perubahan wujud dari cair menjadi gas."
+},
+{
+q:"Terbentuknya titik-titik air pada luar gelas dingin merupakan contoh...",
+o:["Mencair","Mengembun","Menyublim","Membeku"],
+a:1,
+e:"Uap air di udara berubah menjadi cair ketika menyentuh permukaan dingin."
+},
+{
+q:"Kapur barus yang lama-kelamaan habis mengalami...",
+o:["Mencair","Membeku","Menyublim","Mengembun"],
+a:2,
+e:"Menyublim adalah perubahan wujud padat langsung menjadi gas."
+},
+{
+q:"Perubahan gas langsung menjadi padat disebut...",
+o:["Mencair","Mengkristal atau deposisi","Menguap","Membeku"],
+a:1,
+e:"Mengkristal atau deposisi adalah perubahan wujud gas menjadi padat."
+},
+{
+q:"Perubahan wujud yang membutuhkan penerimaan kalor adalah...",
+o:["Membeku","Mengembun","Mencair","Mengkristal"],
+a:2,
+e:"Mencair membutuhkan kalor. Menguap dan menyublim juga menerima kalor."
+},
+{
+q:"Perubahan wujud yang melepaskan kalor adalah...",
+o:["Menguap","Mencair","Menyublim","Membeku"],
+a:3,
+e:"Membeku melepaskan kalor. Mengembun dan mengkristal juga melepaskan kalor."
+},
+{
+q:"Apa perbedaan menguap dan mendidih?",
+o:["Menguap hanya terjadi saat 100°C","Mendidih terjadi di seluruh bagian cairan pada suhu didihnya","Menguap selalu menghasilkan padatan","Keduanya tidak berbeda"],
+a:1,
+e:"Mendidih berlangsung di seluruh bagian zat cair pada suhu didih untuk tekanan tertentu. Menguap dapat terjadi di permukaan pada berbagai suhu."
+},
+{
+q:"Air laut yang berubah menjadi uap karena panas Matahari mengalami...",
+o:["Membeku","Menguap","Mengembun","Mengkristal"],
+a:1,
+e:"Air laut menerima energi panas dan menguap sebagai bagian dari siklus air."
+},
+
+{
+q:"Perubahan fisika adalah perubahan yang...",
+o:["Selalu menghasilkan gas","Menghasilkan zat baru","Tidak menghasilkan zat baru","Selalu mengubah warna"],
+a:2,
+e:"Perubahan fisika tidak menghasilkan zat baru."
+},
+{
+q:"Manakah contoh perubahan fisika?",
+o:["Besi berkarat","Kayu terbakar","Es mencair","Makanan membusuk"],
+a:2,
+e:"Es mencair hanya mengubah wujud air, bukan menghasilkan zat baru."
+},
+{
+q:"Manakah contoh perubahan kimia?",
+o:["Air membeku","Kertas dipotong","Gula larut dalam air","Besi berkarat"],
+a:3,
+e:"Besi berkarat menghasilkan zat baru berupa karat."
+},
+{
+q:"Mengapa kayu terbakar termasuk perubahan kimia?",
+o:["Karena ukurannya mengecil saja","Karena menghasilkan zat baru","Karena bentuknya berubah saja","Karena dapat dipotong"],
+a:1,
+e:"Pembakaran menghasilkan zat baru seperti abu dan gas."
+},
+{
+q:"Perubahan warna dapat menjadi tanda...",
+o:["Reaksi kimia","Perubahan ukuran saja","Pemuaian selalu","Penyusutan saja"],
+a:0,
+e:"Perubahan warna dapat menjadi salah satu tanda terjadinya reaksi kimia."
+},
+{
+q:"Gula yang larut dalam air termasuk perubahan...",
+o:["Kimia","Fisika","Nuklir","Biologis"],
+a:1,
+e:"Gula larut dalam air tanpa menghasilkan zat baru."
+},
+{
+q:"Pembusukan buah termasuk perubahan...",
+o:["Fisika","Kimia","Wujud saja","Ukuran saja"],
+a:1,
+e:"Pembusukan melibatkan reaksi yang menghasilkan zat baru."
+},
+{
+q:"Terbentuknya endapan pada reaksi tertentu dapat menjadi tanda...",
+o:["Reaksi kimia","Perubahan bentuk saja","Penguapan saja","Penyusutan saja"],
+a:0,
+e:"Terbentuknya endapan dapat menunjukkan terbentuknya zat baru."
+},
+{
+q:"Manakah yang bukan contoh perubahan kimia?",
+o:["Besi berkarat","Kayu terbakar","Es mencair","Makanan membusuk"],
+a:2,
+e:"Es mencair merupakan perubahan fisika karena tidak menghasilkan zat baru."
+},
+{
+q:"Dalam perubahan kimia, zat awal dapat berubah menjadi...",
+o:["Zat baru","Zat yang selalu sama","Benda tanpa massa","Ruang kosong"],
+a:0,
+e:"Perubahan kimia menghasilkan zat baru dengan sifat yang berbeda."
+},
+
+{
+q:"Rumus massa jenis adalah...",
+o:["ρ = V/m","ρ = m/V","ρ = m × V","ρ = m + V"],
+a:1,
+e:"Massa jenis dihitung dengan membagi massa dengan volume."
+},
+{
+q:"Simbol yang digunakan untuk massa jenis adalah...",
+o:["V","m","ρ","t"],
+a:2,
+e:"Massa jenis dilambangkan dengan huruf Yunani rho (ρ)."
+},
+{
+q:"Satuan SI untuk massa jenis adalah...",
+o:["kg/m³","kg/m","m/s","N/m"],
+a:0,
+e:"Satuan SI massa jenis adalah kilogram per meter kubik (kg/m³)."
+},
+{
+q:"Sebuah benda bermassa 200 gram memiliki volume 100 cm³. Massa jenisnya adalah...",
+o:["0,5 g/cm³","1 g/cm³","2 g/cm³","20 g/cm³"],
+a:2,
+e:"ρ = 200/100 = 2 g/cm³."
+},
+{
+q:"Massa benda 60 gram dan volumenya 20 cm³. Massa jenis benda adalah...",
+o:["2 g/cm³","3 g/cm³","4 g/cm³","5 g/cm³"],
+a:1,
+e:"ρ = 60/20 = 3 g/cm³."
+},
+{
+q:"Sebuah benda memiliki massa jenis 0,8 g/cm³ dan cairan memiliki massa jenis 1 g/cm³. Benda akan...",
+o:["Tenggelam","Melayang","Terapung","Menguap"],
+a:2,
+e:"Karena massa jenis benda (0,8) lebih kecil daripada massa jenis cairan (1), benda terapung."
+},
+{
+q:"Jika massa jenis benda lebih besar daripada massa jenis cairan, benda cenderung...",
+o:["Terapung","Tenggelam","Menguap","Mencair"],
+a:1,
+e:"Benda dengan massa jenis rata-rata lebih besar daripada cairan cenderung tenggelam."
+},
+{
+q:"Jika massa jenis benda sama dengan massa jenis cairan, benda dalam kondisi ideal akan...",
+o:["Terapung","Tenggelam","Melayang","Membeku"],
+a:2,
+e:"Jika massa jenis rata-rata benda sama dengan cairan, benda dapat melayang."
+},
+{
+q:"Alat yang dapat digunakan untuk mengukur volume benda tidak beraturan adalah...",
+o:["Termometer","Gelas ukur","Neraca pegas","Penggaris saja"],
+a:1,
+e:"Volume benda tidak beraturan dapat ditentukan melalui metode perpindahan air dengan gelas ukur."
+},
+{
+q:"Volume benda tidak beraturan diukur dari...",
+o:["Massa awal dikurangi massa akhir","Volume akhir air dikurangi volume awal air","Suhu akhir dikurangi suhu awal","Panjang dikali waktu"],
+a:1,
+e:"Volume benda sama dengan kenaikan volume air setelah benda dimasukkan."
+},
+
+{
+q:"Mengapa kapal laut dapat mengapung?",
+o:["Kapal tidak memiliki massa","Massa jenis rata-rata kapal lebih kecil daripada air","Kapal terbuat dari air","Air tidak memiliki massa"],
+a:1,
+e:"Rongga udara di dalam kapal membuat massa jenis rata-rata kapal lebih kecil daripada air."
+},
+{
+q:"Mengapa minyak umumnya berada di atas air?",
+o:["Massa jenis minyak lebih kecil daripada air","Massa jenis minyak selalu lebih besar","Minyak tidak memiliki massa","Air berubah menjadi gas"],
+a:0,
+e:"Minyak umumnya memiliki massa jenis lebih kecil daripada air sehingga berada di atasnya."
+},
+{
+q:"Mengapa manusia lebih mudah mengapung di Laut Mati?",
+o:["Airnya tidak memiliki massa","Massa jenis airnya tinggi karena kadar garam yang tinggi","Airnya berupa gas","Tidak ada gaya gravitasi"],
+a:1,
+e:"Kadar garam yang tinggi meningkatkan massa jenis air Laut Mati."
+},
+{
+q:"Sebuah benda bermassa 100 gram dan volumenya 50 cm³. Massa jenisnya adalah...",
+o:["0,5 g/cm³","1 g/cm³","2 g/cm³","5 g/cm³"],
+a:2,
+e:"ρ = 100/50 = 2 g/cm³."
+},
+{
+q:"Jika massa tetap tetapi volume bertambah, massa jenis akan...",
+o:["Bertambah","Berkurang","Selalu tetap","Menjadi nol"],
+a:1,
+e:"Massa jenis adalah massa dibagi volume. Jika massa tetap dan volume bertambah, hasil pembagian berkurang."
+},
+{
+q:"Dua benda memiliki volume sama. Benda A bermassa 100 gram dan B bermassa 200 gram. Benda dengan massa jenis lebih besar adalah...",
+o:["Benda A","Benda B","Keduanya sama","Tidak dapat dibandingkan"],
+a:1,
+e:"Pada volume yang sama, benda bermassa lebih besar memiliki massa jenis lebih besar."
+},
+{
+q:"Jika massa benda 300 gram dan massa jenisnya 3 g/cm³, volumenya adalah...",
+o:["50 cm³","100 cm³","150 cm³","900 cm³"],
+a:1,
+e:"V = m/ρ = 300/3 = 100 cm³."
+},
+{
+q:"Massa jenis 1 g/cm³ setara dengan...",
+o:["10 kg/m³","100 kg/m³","1.000 kg/m³","10.000 kg/m³"],
+a:2,
+e:"Konversi satuan: 1 g/cm³ = 1.000 kg/m³."
+},
+{
+q:"Benda dengan massa jenis 1,2 g/cm³ dimasukkan ke cairan bermassa jenis 1 g/cm³. Benda cenderung...",
+o:["Terapung","Melayang","Tenggelam","Menyublim"],
+a:2,
+e:"Massa jenis benda lebih besar daripada massa jenis cairan, sehingga benda cenderung tenggelam."
+},
+{
+q:"Apa yang menentukan kecenderungan benda terapung atau tenggelam dalam cairan?",
+o:["Warna benda","Bentuk benda saja","Perbandingan massa jenis benda dan cairan","Suhu udara saja"],
+a:2,
+e:"Perbandingan massa jenis rata-rata benda dan cairan menentukan kecenderungan terapung, melayang, atau tenggelam."
+}
+
+];
+
+/* =================================================
+   SISTEM KUIS
+================================================= */
+
+let quizQuestions = [];
+let currentQuestion = 0;
+let userAnswers = [];
+let finished = false;
+
+function shuffleArray(array){
+  const result = [...array];
+  for(let i=result.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [result[i],result[j]]=[result[j],result[i]];
+  }
+  return result;
+}
+
+function openPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('home').style.display='none';
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function goHome(){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const home=document.getElementById('home');
+  home.classList.add('active');
+  home.style.display='flex';
+  window.scrollTo(0,0);
+}
+
+function startQuiz(){
+  quizQuestions=shuffleArray(questionBank).slice(0,15);
+  currentQuestion=0;
+  userAnswers=Array(15).fill(null);
+  finished=false;
+
+  document.getElementById('quizStart').style.display='none';
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizGame').style.display='block';
+
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q=quizQuestions[currentQuestion];
+
+  document.getElementById('questionNumber').textContent=
+    `Soal ${currentQuestion+1} / 15`;
+
+  document.getElementById('answeredCount').textContent=
+    `Terjawab: ${userAnswers.filter(a=>a!==null).length}`;
+
+  document.getElementById('progressBar').style.width=
+    `${((currentQuestion+1)/15)*100}%`;
+
+  document.getElementById('questionText').textContent=q.q;
+
+  const options=document.getElementById('options');
+  options.innerHTML='';
+
+  q.o.forEach((option,index)=>{
+    const button=document.createElement('button');
+    button.className='option';
+    button.textContent=String.fromCharCode(65+index)+'. '+option;
+
+    if(userAnswers[currentQuestion]===index){
+      button.classList.add('selected');
+    }
+
+    button.onclick=()=>{
+      userAnswers[currentQuestion]=index;
+      renderQuestion();
+    };
+
+    options.appendChild(button);
+  });
+
+  document.getElementById('prevBtn').disabled=currentQuestion===0;
+
+  const nextBtn=document.getElementById('nextBtn');
+  nextBtn.textContent=currentQuestion===14?'Selesai ✓':'Selanjutnya →';
+}
+
+function nextQuestion(){
+  if(userAnswers[currentQuestion]===null){
+    alert('Pilih salah satu jawaban terlebih dahulu!');
+    return;
+  }
+
+  if(currentQuestion<14){
+    currentQuestion++;
+    renderQuestion();
+  }else{
+    finishQuiz();
+  }
+}
+
+function previousQuestion(){
+  if(currentQuestion>0){
+    currentQuestion--;
+    renderQuestion();
+  }
+}
+
+function finishQuiz(){
+  finished=true;
+
+  const correct=quizQuestions.filter((q,i)=>userAnswers[i]===q.a).length;
+  const score=Math.round((correct/15)*100);
+
+  document.getElementById('quizGame').style.display='none';
+  document.getElementById('quizResult').style.display='block';
+
+  document.getElementById('scoreText').textContent=score;
+
+  document.getElementById('correctCount').textContent=
+    `Jawaban benar: ${correct} dari 15 soal`;
+
+  let message='';
+  if(score===100) message='Luar biasa! Semua jawabanmu benar!';
+  else if(score>=80) message='Hebat! Pemahamanmu sudah sangat baik.';
+  else if(score>=60) message='Bagus! Terus tingkatkan pemahamanmu.';
+  else if(score>=40) message='Tetap semangat. Pelajari kembali bagian yang belum dipahami.';
+  else message='Jangan menyerah. Baca kembali materi dan coba lagi.';
+
+  document.getElementById('resultMessage').textContent=message;
+  document.getElementById('reviewArea').innerHTML='';
+  window.scrollTo(0,0);
+}
+
+function showReview(){
+  const area=document.getElementById('reviewArea');
+  area.innerHTML='<h2 style="margin:30px 0 15px;font-family:Playfair Display">Pembahasan Jawaban</h2>';
+
+  quizQuestions.forEach((q,i)=>{
+    const isCorrect=userAnswers[i]===q.a;
+
+    const item=document.createElement('div');
+    item.className='review-item';
+
+    const heading=document.createElement('h4');
+    heading.textContent=`${i+1}. ${q.q}`;
+    item.appendChild(heading);
+
+    const status=document.createElement('p');
+    status.className=isCorrect?'good':'bad';
+    status.textContent=isCorrect?'✓ Jawaban benar':'✗ Jawaban salah';
+    item.appendChild(status);
+
+    const yourAnswer=document.createElement('p');
+    yourAnswer.textContent=
+      'Jawabanmu: '+(userAnswers[i]===null?'Belum dijawab':q.o[userAnswers[i]]);
+    item.appendChild(yourAnswer);
+
+    const correctAnswer=document.createElement('p');
+    correctAnswer.className='good';
+    correctAnswer.textContent='Jawaban benar: '+q.o[q.a];
+    item.appendChild(correctAnswer);
+
+    const explanation=document.createElement('p');
+    explanation.textContent='Pembahasan: '+q.e;
+    item.appendChild(explanation);
+
+    area.appendChild(item);
+  });
+
+  area.scrollIntoView({behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
